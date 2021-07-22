@@ -27,7 +27,9 @@
         </nav>
         <!-- Main Navigation / End -->
       </div>
-
+      {% if app.user %}
+        {% include 'base/afterLogin.html.twig' %}
+      {% elseif not app.user %}
       <!--  Right Side Content   -->
       <div class="uk-navbar-right">
         <div class="header-widget">
@@ -35,12 +37,12 @@
           <span class="icon-feather-x icon-small uk-hidden@s" uk-toggle="target: .header-widget ; cls: is-active"></span>
           <!-- Login & Register Button -->
           <div class="uk-child-width-1-2 uk-text-center" uk-grid>
-            <div><a href="#" class="btn btn-default transition-3d-hover ml-3">Login</a></div>
-            <div><a href="#" class="btn btn-outline-dark">Sign up</a></div>
+            <div><a href="{{ path('app_login') }}" class="btn btn-default transition-3d-hover ml-3">Login</a></div>
+            <div><a href="{{ path('app_register') }}" class="btn btn-outline-dark">Sign up</a></div>
           </div>
         </div>
       </div>
- 
+      {% endif %}
         <!-- User icons -->
         <a href="#" class="uil-user icon-small uk-hidden@s" uk-toggle="target: .header-widget ; cls: is-active"></a>
     </div>

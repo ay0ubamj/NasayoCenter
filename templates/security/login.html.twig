@@ -16,25 +16,18 @@
 
 
 <body>
-    
-    <div uk-height-viewport="" class="uk-flex uk-flex-middle">
-        
+    <div uk-height-viewport="" class="uk-flex uk-flex-middle" class="bg-grey">
         <div class="uk-width-2-3@m uk-width-1-2@s m-auto rounded">
             {% if error %}
             <div class="uk-alert-danger uk-text-center" uk-alert> <a class="uk-alert-close" uk-close></a><p>{{ error.messageKey|trans(error.messageData, 'security') }}</p></div>
             {% endif %}
 
-            {% if app.user %}
-                <div class="mb-3">
-                    You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
-                </div>
-            {% endif %}
             <div class="uk-child-width-1-2@m uk-grid-collapse bg-gradient-grey" uk-grid="">
 
                 <!-- column one -->
                 <div class="uk-margin-auto-vertical uk-text-center uk-animation-scale-up p-3 uk-light">
-                    <i class=" uil-graduation-hat icon-large"></i>
-                    <h3 class="mb-4"> Nasayo Center</h3>
+                    <a href="{{ path('home') }}"><i class=" uil-graduation-hat icon-large"></i></a>
+                    <a href="{{ path('home') }}"><h3 class="mb-4"> Nasayo Center</h3></a>
                     <p>The right place where you can learn every thing ! </p>
                 </div>
 
@@ -51,7 +44,7 @@
                                 <span class="uk-form-icon">
                                     <i class="icon-feather-mail"></i>
                                 </span>
-                                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="uk-input" autocomplete="email" required autofocus>
+                                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="uk-input" autocomplete="email" required autofocus placeholder="name@exemple.com">
                             </div>
                         </div>
 
@@ -68,7 +61,7 @@
 
                         <div class="mt-4 uk-flex-middle uk-grid-small" uk-grid="">
                             <div class="uk-width-expand@s">
-                                <p>You don't have an account ?<a href="page-register.html"> Sign up</a></p>
+                                <p>You don't have an account ?<a href="{{ path('app_register') }}"> Signup</a></p>
                             </div>
                             <div class="uk-width-auto@s">
                                 <button type="submit" class="btn btn-default">Login</button>
@@ -82,8 +75,7 @@
         </div>
     </div>
 
-    <!-- Content -End
-    ================================================== -->
+    <!-- Content End -->
 
     {% block javascripts %}
         <script src="{{ asset("assets/js/framework.js") }}"></script>

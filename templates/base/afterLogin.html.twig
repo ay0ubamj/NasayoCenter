@@ -36,7 +36,7 @@
               <img src="..\assets\images\avatars\avatar-2.jpeg" alt=""/>
             </div>
             <div class="dropdown-user-name">
-              Richard Ali <span>Students</span>
+              {{ app.user.nom }} {{ app.user.prenom }} <span>Students</span>
             </div>
           </div>
         </a>
@@ -75,13 +75,8 @@
           </li>
           <li class="menu-divider"></li>
           <li>
-            <a href="#">
-              <i class="icon-feather-help-circle"></i> Help</a
-            >
-          </li>
-          <li>
-            <a href="page-login.html">
-              <i class="icon-feather-log-out"></i> Sing Out</a
+            <a href="{{ path('app_logout') }}">
+              <i class="icon-feather-log-out"></i> Logout</a
             >
           </li>
         </ul>
