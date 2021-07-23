@@ -5,50 +5,10 @@
         <div class="uk-width-1-3@m">
           <div class="course-thumbnail">
             <img src="..\assets\images\course\1.png" alt="" />
-            <a
-              class="play-button-trigger show"
-              href="#trailer-modal"
-              uk-toggle=""
-            >
-            </a>
-          </div>
-
-          <!-- video demo model -->
-          <div id="trailer-modal" uk-modal="">
-            <div class="uk-modal-dialog">
-              <button
-                class="uk-modal-close-default mt-2 mr-1"
-                type="button"
-                uk-close=""
-              ></button>
-              <div class="uk-modal-header">
-                <h4>Trailer video</h4>
-              </div>
-              <div class="video-responsive">
-                <iframe
-                  src="https://www.youtube.com/embed/nOCXXHGMezU"
-                  class="uk-padding-remove"
-                  uk-video="automute: true"
-                  frameborder="0"
-                  allowfullscreen=""
-                  uk-responsive=""
-                ></iframe>
-              </div>
-
-              <div class="uk-modal-body">
-                <h3>Build Responsive Websites</h3>
-                <p>
-                  Duis aute irure dolor in reprehenderit in voluptate velit esse
-                  cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                  occaecat cupidatat non proident, sunt in culpa qui officia
-                  deserunt mollit anim id est laborum.
-                </p>
-              </div>
-            </div>
           </div>
         </div>
         <div class="uk-width-2-3@m course-details pt-0">
-          <h1>The Complete JavaScript Crash Course</h1>
+          <h1>{{ formation.nomformation }}</h1>
 
           <p>
             Master JavaScript with the most complete course! Projects Excellent
@@ -61,26 +21,18 @@
             <div>
               <div class="course-details-info">
                 <ul>
-                  <li>
-                    <div class="star-rating">
-                      <span class="avg"> 4.9 </span> <span class="star"></span
-                      ><span class="star"></span><span class="star"></span
-                      ><span class="star"></span><span class="star"></span>
-                    </div>
-                  </li>
-                  <li><i class="icon-feather-users"></i> 1200 Enerolled</li>
-                </ul>
-              </div>
-
-              <div class="course-details-info">
-                <ul>
                   <li>Created by <a href="#"> Jonathan Madano </a></li>
+                </ul>
+                <ul>
                   <li>Last updated 10/2019</li>
                 </ul>
               </div>
             </div>
-            <a href="takecouse.html" class="btn-course-start btn">
-              Start The Course
+            <a href="#">
+              <button type="button" class="btn btn-default btn-icon-label uk-first-column">
+                <span class="btn-inner--icon"><i class="uil-play"></i></span>
+                <span class="btn-inner--text">Play now</span>
+              </button>
             </a>
           </div>
         </div>
@@ -105,19 +57,7 @@
           <!-- Description -->
           <li class="course-description-content">
             <h4>Description</h4>
-            <p>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-              nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam
-              erat volutpat. Ut wisi enim ad minim laoreet dolore magna aliquam
-              erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci
-              tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
-              consequat
-            </p>
-            <p>
-              consectetuer adipiscing elit, sed diam nonummy nibh euismod
-              tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi
-              enim ad minim veniam, quis nostrud exerci
-            </p>
+            <p>{{ formation.description }}</p>
 
             <h4>What you’ll learn</h4>
             <div class="uk-child-width-1-2@s" uk-grid="">
@@ -138,42 +78,6 @@
               </div>
             </div>
 
-            <h4>Requirements</h4>
-            <ul class="list-1">
-              <li>Any computer will work: Windows, macOS or Linux</li>
-              <li>Basic programming HTML and CSS.</li>
-              <li>Basic/Minimal understanding of JavaScript</li>
-            </ul>
-
-            <h4>Here is exactly what we cover in this course:</h4>
-            <p>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-              nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam
-              erat volutpat. Ut wisi enim ad minim laoreet dolore magna aliquam
-              erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci
-              tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
-              consequat
-            </p>
-
-            <p>
-              consectetuer adipiscing elit, sed diam nonummy nibh euismod
-              tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi
-              enim ad minim veniam, quis nostrud exerci
-            </p>
-
-            <p>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-              nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam
-              erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci
-              tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
-              consequat. Nam liber tempor cum soluta nobis eleifend option
-              congue nihil imperdiet doming id quod mazim placerat facer possim
-              assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-              sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
-              aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud
-              exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea
-              commodo consequat.
-            </p>
           </li>
 
           <!-- Curriculum-->
