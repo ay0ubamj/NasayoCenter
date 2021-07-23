@@ -22,8 +22,10 @@
         {% endblock %}
     </head>
     <body>
-        {% include 'base/nav.html.twig' %}
-        {% block body %}{% endblock %}
-        {% include "base/footer.html.twig" %}
+        <div id="wrapper">
+            {% include 'base/nav.html.twig' %}
+            {% block body %}{% endblock %}
+            {% include "base/footer.html.twig" %}
+        </div>
     </body>
 </html>
