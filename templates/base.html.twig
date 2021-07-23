@@ -1,19 +1,31 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
+            <link rel="stylesheet" href="{{ asset("assets/css/style.css") }}">
+            <link rel="stylesheet" href="{{ asset("assets/css/night-mode.css") }}">
+            <link rel="stylesheet" href="{{ asset("assets/css/framework.css") }}">
+            <link rel="stylesheet" href="{{ asset("assets/css/bootstrap.css") }}">
+            <link rel="stylesheet" href="{{ asset("assets/css/icons.css") }}">
         {% endblock %}
 
         {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
+            <script src="{{ asset("assets/js/framework.js") }}"></script>
+            <script src="{{ asset("assets/js/jquery-3.3.1.min.js") }}"></script>
+            <script src="{{ asset("assets/js/simplebar.js") }}"></script>
+            <script src="{{ asset("assets/js/mmenu.min.js") }}"></script>
+            <script src="{{ asset("assets/js/night.js") }}"></script>
+            <script src="{{ asset("assets/js/main.js") }}"></script>
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <div id="wrapper">
+            {% include 'base/nav.html.twig' %}
+            {% block body %}{% endblock %}
+            {% include "base/footer.html.twig" %}
+        </div>
     </body>
 </html>

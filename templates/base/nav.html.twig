@@ -1,0 +1,51 @@
+<header class="header header-horizontal">
+  <div class="container">
+    <nav uk-navbar="">
+      <!-- Left Side Content -->
+      <div class="uk-navbar-left">
+        <!-- menu icon -->
+        <span class="mmenu-trigger">
+          <button class="hamburger hamburger--collapse" type="button">
+            <span class="hamburger-box">
+              <span class="hamburger-inner"></span>
+            </span>
+          </button>
+        </span>
+        <!-- Logo -->
+        <a href="{{ path('home') }}" class="logo">
+          <img src="..\assets\images\logo-dark.svg" alt="" />
+          <span>Nasayo Center</span>
+        </a>
+
+        <!-- Main Navigation -->
+        <nav id="navigation">
+          <ul id="responsive">
+            <li><a href="{{ path('home') }}" class="nav-active">Home</a></li>
+            <li><a href="{{ path('courses') }}">Courses</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </nav>
+        <!-- Main Navigation / End -->
+      </div>
+      {% if app.user %}
+        {% include 'base/afterLogin.html.twig' %}
+      {% elseif not app.user %}
+      <!--  Right Side Content   -->
+      <div class="uk-navbar-right">
+        <div class="header-widget">
+          <!-- User icons close mobile-->
+          <span class="icon-feather-x icon-small uk-hidden@s" uk-toggle="target: .header-widget ; cls: is-active"></span>
+          <!-- Login & Register Button -->
+          <div class="uk-child-width-1-2 uk-text-center" uk-grid>
+            <div><a href="{{ path('app_login') }}" class="btn btn-default transition-3d-hover ml-3">Login</a></div>
+            <div><a href="{{ path('app_register') }}" class="btn btn-outline-dark">Sign up</a></div>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+        <!-- User icons -->
+        <a href="#" class="uil-user icon-small uk-hidden@s" uk-toggle="target: .header-widget ; cls: is-active"></a>
+    </nav>
+  </div>
+</header>
+

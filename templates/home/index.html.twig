@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %} 
+
+{% block title %}NasayoCenter - Home{% endblock %}
+
+{% block body %}
+    <div id="wrapper" class="bg-white">
+        {% include "home/welcome.html.twig" %}
+        {% include "home/lastCourses.html.twig" %}
+    </div>
+{% endblock %}

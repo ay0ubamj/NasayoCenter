@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+    <title>{% block title %}NasayoCenter - Login{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset("assets/css/style.css") }}">
+        <link rel="stylesheet" href="{{ asset("assets/css/night-mode.css") }}">
+        <link rel="stylesheet" href="{{ asset("assets/css/framework.css") }}">
+        <link rel="stylesheet" href="{{ asset("assets/css/bootstrap.css") }}">
+        <link rel="stylesheet" href="{{ asset("assets/css/icons.css") }}">
+    {% endblock %}
+</head>
+
+
+<body>
+    <div uk-height-viewport="" class="uk-flex uk-flex-middle" class="bg-grey">
+        <div class="uk-width-2-3@m uk-width-1-2@s m-auto rounded">
+            {% if error %}
+            <div class="uk-alert-danger uk-text-center" uk-alert> <a class="uk-alert-close" uk-close></a><p>{{ error.messageKey|trans(error.messageData, 'security') }}</p></div>
+            {% endif %}
+
+            <div class="uk-child-width-1-2@m uk-grid-collapse bg-gradient-grey" uk-grid="">
+
+                <!-- column one -->
+                <div class="uk-margin-auto-vertical uk-text-center uk-animation-scale-up p-3 uk-light">
+                    <a href="{{ path('home') }}"><i class=" uil-graduation-hat icon-large"></i></a>
+                    <a href="{{ path('home') }}"><h3 class="mb-4"> Nasayo Center</h3></a>
+                    <p>The right place where you can learn every thing ! </p>
+                </div>
+
+                <!-- column two -->
+                <div class="uk-card-default p-5 rounded">
+                    <div class="mb-4 uk-text-center">
+                        <h3 class="mb-0"> Welcome !</h3>
+                        <p class="my-2">Login to learn new things.</p>
+                    </div>
+                    <form method="POST">
+                        <div class="uk-form-group">
+                            <label class="uk-form-label" for="inputEmail">Email</label>
+                            <div class="uk-position-relative w-100">
+                                <span class="uk-form-icon">
+                                    <i class="icon-feather-mail"></i>
+                                </span>
+                                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="uk-input" autocomplete="email" required autofocus placeholder="name@exemple.com">
+                            </div>
+                        </div>
+
+                        <div class="uk-form-group">
+                            <label class="uk-form-label"> Password</label>
+                            <div class="uk-position-relative w-100">
+                                <span class="uk-form-icon">
+                                    <i class="icon-feather-lock"></i>
+                                </span>
+                                <input type="password" name="password" id="inputPassword" class="uk-input" autocomplete="current-password" required placeholder="********">
+                            </div>
+                        </div>
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                        <div class="mt-4 uk-flex-middle uk-grid-small" uk-grid="">
+                            <div class="uk-width-expand@s">
+                                <p>You don't have an account ?<a href="{{ path('app_register') }}"> Signup</a></p>
+                            </div>
+                            <div class="uk-width-auto@s">
+                                <button type="submit" class="btn btn-default">Login</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <!--  End column two -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Content End -->
+
+    {% block javascripts %}
+        <script src="{{ asset("assets/js/framework.js") }}"></script>
+        <script src="{{ asset("assets/js/jquery-3.3.1.min.js") }}"></script>
+        <script src="{{ asset("assets/js/simplebar.js") }}"></script>
+        <script src="{{ asset("assets/js/mmenu.min.js") }}"></script>
+        <script src="{{ asset("assets/js/night.js") }}"></script>
+        <script src="{{ asset("assets/js/main.js") }}"></script>
+    {% endblock %}
+
+
+</body>
+
+</html>

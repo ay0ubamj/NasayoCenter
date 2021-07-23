@@ -1,0 +1,122 @@
+<div class="uk-navbar-right">
+    <div class="header-widget">
+      <div class="searchbox uk-visible@s">
+        <input
+          class="uk-search-input"
+          type="search"
+          placeholder="Search..."
+        />
+        <button class="btn-searchbox"></button>
+      </div>
+     
+      <!-- User icons close mobile-->
+      <span class="icon-feather-x icon-small uk-hidden@s" uk-toggle="target: .header-widget ; cls: is-active"></span>
+
+      <!-- course icon  -->
+      <a href="#" class="header-widget-icon" uk-tooltip="title: My Courses ; pos: bottom ;offset:21">
+        <i class="uil-youtube-alt"></i>
+      </a>
+      <!-- notificiation icon  -->
+      <a href="#" class="header-widget-icon" uk-tooltip="title: Notificiation ; pos: bottom ;offset:21">
+        <i class="uil-bell"></i>
+        <span>4</span>
+      </a>
+
+      <!-- profile-icon-->
+
+      <a href="#" class="header-widget-icon profile-icon">
+        <img src="..\assets\images\avatars\avatar-2.jpeg" alt="" class="header-profile-icon"/>
+      </a>
+
+      <div uk-dropdown="pos: top-right ;mode:click" class="dropdown-notifications small">
+        <!-- User Name / Avatar -->
+        <a href="profile-1.html">
+          <div class="dropdown-user-details">
+            <div class="dropdown-user-avatar">
+              <img src="..\assets\images\avatars\avatar-2.jpeg" alt=""/>
+            </div>
+            <div class="dropdown-user-name">
+              {{ app.user.nom }} {{ app.user.prenom }} <span>Students</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- User menu -->
+        <ul class="dropdown-user-menu">
+          <li>
+            <a href="#">
+              <i class="icon-material-outline-dashboard"></i>
+              Dashboard</a
+            >
+          </li>
+          <li>
+            <a href="#">
+              <i class="icon-feather-bookmark"></i> Bookmark
+            </a>
+          </li>
+          <li>
+            <a href="profile-edit.html">
+              <i class="icon-feather-settings"></i> Account
+              Settings</a
+            >
+          </li>
+          <li>
+            <a href="#" style="color: #62d76b">
+              <i class="icon-feather-star"></i> Upgrade To Premium</a
+            >
+          </li>
+          <li>
+            <a href="#" id="night-mode" class="btn-night-mode">
+              <i class="icon-feather-moon"></i> Night mode
+              <span class="btn-night-mode-switch">
+                <span class="uk-switch-button"></span>
+              </span>
+            </a>
+          </li>
+          <li class="menu-divider"></li>
+          <li>
+            <a href="{{ path('app_logout') }}">
+              <i class="icon-feather-log-out"></i> Logout</a
+            >
+          </li>
+        </ul>
+
+      </div>
+    </div>
+
+    <!-- icon search-->
+    <a
+      class="uk-navbar-toggle uk-hidden@s"
+      uk-toggle="target: .nav-overlay; animation: uk-animation-fade"
+      href="#"
+    >
+      <i class="uil-search icon-small"></i>
+    </a>
+
+    <!-- User icons -->
+    <a
+      href="#"
+      class="uil-user icon-small uk-hidden@s"
+      uk-toggle="target: .header-widget ; cls: is-active"
+    >
+    </a>
+    <!-- overlay seach on mobile-->
+    <div class="nav-overlay uk-navbar-left uk-position-relative uk-flex-1 bg-grey uk-light p-2" hidden="" style="z-index: 10000">
+      <div class="uk-navbar-item uk-width-expand" style="min-height: 60px">
+        <form class="uk-search uk-search-navbar uk-width-1-1">
+          <input
+            class="uk-search-input"
+            type="search"
+            placeholder="Search..."
+            autofocus=""
+          />
+        </form>
+      </div>
+      <a
+        class="uk-navbar-toggle"
+        uk-close=""
+        uk-toggle="target: .nav-overlay; animation: uk-animation-fade"
+        href="#"
+      ></a>
+    </div>
+</div>
