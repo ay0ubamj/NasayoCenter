@@ -6169,22 +6169,22 @@ input[type="button"].btn-block {
 }
 
 .page-link {
-  position: relative;
   display: block;
-  padding: 0.7rem 0.9rem;
-  margin-left: -1px;
+  transition: color 0.1s ease-in-out;
   line-height: 1.25;
-  color: #007bff;
+  color: #77838f;
   background-color: #fff;
-  border: 1px solid #dee2e6;
+  border: 0 solid #77838f;
+  padding: 0.5rem 0.75rem;
+  border-radius: 5px;
+  font-weight: 600;
 }
 
 .page-link:hover {
-  z-index: 2;
-  color: #0056b3;
   text-decoration: none;
-  background-color: #e9ecef;
-  border-color: #dee2e6;
+  color: #3e416d;
+  background-color: rgba(9, 27, 18, 0.1);
+  border-color: rgba(9, 27, 18, 0.1);
 }
 
 .page-link:focus {
