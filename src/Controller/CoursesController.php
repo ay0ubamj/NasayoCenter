@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Formation;
 use Knp\Component\Pager\PaginatorInterface;
 use App\Repository\FormationRepository;
+use App\Repository\CommentaireRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -31,11 +32,5 @@ class CoursesController extends AbstractController
         ]);
     }
 
-    #[Route('/courses/{slug}', name: 'course')]
-    public function course(Formation $formation): Response
-    {
-        return $this->render('course/index.html.twig', [
-            'formation' => $formation,
-        ]);
-    }
+    
 }

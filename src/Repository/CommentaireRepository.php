@@ -19,32 +19,17 @@ class CommentaireRepository extends ServiceEntityRepository
         parent::__construct($registry, Commentaire::class);
     }
 
-    // /**
-    //  * @return Commentaire[] Returns an array of Commentaire objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+      * @return Int 
+      */
+    public function NumberofComments($formation)
     {
         return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+                    ->select('count(c.id)')
+                    ->where('c.formation = :formation')
+                    ->andWhere('c.etat = true')
+                    ->setParameter('formation', $formation)
+                    ->getQuery()
+                    ->getSingleScalarResult();
     }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Commentaire
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

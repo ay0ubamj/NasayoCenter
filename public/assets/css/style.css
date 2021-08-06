@@ -10890,7 +10890,7 @@ ul[class~=course-curriculum-list] {
 }
 
 [class~=comment-content] {
-	padding-left: 90px;
+	padding-left: 40px;
 }
 
 .comments-avatar img {
@@ -30787,4 +30787,5 @@ select[class~=bs-select-hidden] {
 		min-width: 226px;
 	}
 }
+{"mode":"full","isActive":false}
 {"mode":"full","isActive":false}
