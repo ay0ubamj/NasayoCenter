@@ -43,8 +43,10 @@
           uk-switcher="connect: #course-intro-tab ;animation: uk-animation-slide-right-medium, uk-animation-slide-left-medium"
         >
           <li><a href="#">Description</a></li>
-          <li><a href="#">Curriculum</a></li>
-          <li><a href="#">Comments</a></li>
+          {% if app.user %}
+            <li><a href="#">Curriculum</a></li>
+            <li><a href="#">Comments</a></li>
+          {% endif %}
         </ul>
       </nav>
     </div>
@@ -80,152 +82,122 @@
 
           </li>
 
-          <!-- Curriculum-->
-          <ul class="course-curriculum" uk-accordion="multiple: true">
-            <li class="uk-open">
-              <a class="uk-accordion-title" href="#"> Html Introduction </a>
-              <div class="uk-accordion-content">
-                <!-- course-video-list -->
-                <ul class="course-curriculum-list">
-                  <li>What is HTML <span> 23 min </span></li>
-                  <li>What is a Web page? <span> 23 min </span></li>
-                  <li>
-                    Your First Web Page
-                    <a href="#trailer-modal" uk-toggle=""> Preview </a>
-                    <span> 23 min </span>
-                  </li>
-                  <li>Brain Streak <span> 23 min </span></li>
-                </ul>
-              </div>
-            </li>
+          {% if app.user %}
+            <!-- Curriculum-->
+            <ul class="course-curriculum" uk-accordion="multiple: true">
+              <li class="uk-open">
+                <a class="uk-accordion-title" href="#"> Html Introduction </a>
+                <div class="uk-accordion-content">
+                  <!-- course-video-list -->
+                  <ul class="course-curriculum-list">
+                    <li>What is HTML <span> 23 min </span></li>
+                    <li>What is a Web page? <span> 23 min </span></li>
+                    <li>
+                      Your First Web Page
+                      <a href="#trailer-modal" uk-toggle=""> Preview </a>
+                      <span> 23 min </span>
+                    </li>
+                    <li>Brain Streak <span> 23 min </span></li>
+                  </ul>
+                </div>
+              </li>
 
+              <li>
+                <a class="uk-accordion-title" href="#"> Your First webpage</a>
+                <div class="uk-accordion-content">
+                  <!-- course-video-list -->
+                  <ul class="course-curriculum-list">
+                    <li>Headings <span> 23 min </span></li>
+                    <li>Paragraphs <span> 23 min </span></li>
+                    <li>
+                      Emphasis and Strong Tag
+                      <a href="#trailer-modal" uk-toggle=""> Preview </a>
+                      <span> 23 min </span>
+                    </li>
+                    <li>Brain Streak <span> 23 min </span></li>
+                    <li>Live Preview Feature <span> 23 min </span></li>
+                  </ul>
+                </div>
+              </li>
+
+              <li>
+                <a class="uk-accordion-title" href="#"> Some Special Tags </a>
+                <div class="uk-accordion-content">
+                  <!-- course-video-list -->
+                  <ul class="course-curriculum-list">
+                    <li>The paragraph tag <span> 23 min </span></li>
+                    <li>
+                      The break tag
+                      <a href="#trailer-modal" uk-toggle=""> Preview </a>
+                      <span> 23 min </span>
+                    </li>
+                    <li>Headings in HTML <span> 23 min </span></li>
+                    <li>Bold, Italics Underline <span> 23 min </span></li>
+                  </ul>
+                </div>
+              </li>
+
+              <li>
+                <a class="uk-accordion-title" href="#"> HTML Advanced level </a>
+                <div class="uk-accordion-content">
+                  <!-- course-video-list -->
+                  <ul class="course-curriculum-list">
+                    <li>Something to Ponder<span> 23 min </span></li>
+                    <li>Tables <span> 23 min </span></li>
+                    <li>
+                      HTML Entities
+                      <a href="#trailer-modal" uk-toggle=""> Preview </a
+                      ><span> 23 min </span>
+                    </li>
+                    <li>HTML Iframes <span> 23 min </span></li>
+                    <li>Some important things <span> 23 min </span></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+
+            <!-- Comments-->
             <li>
-              <a class="uk-accordion-title" href="#"> Your First webpage</a>
-              <div class="uk-accordion-content">
-                <!-- course-video-list -->
-                <ul class="course-curriculum-list">
-                  <li>Headings <span> 23 min </span></li>
-                  <li>Paragraphs <span> 23 min </span></li>
+              <div class="comments">
+                <h4>Comments <span class="comments-amount"> ({{ nbrCommentaires }}) </span></h4>
+                {% for commentaire in commentaires%}
+                  <ul>
+                    <li>
+                      <div class="comment-content">
+                        <div class="comment-by">{{ commentaire.user.nom }} {{ commentaire.user.prenom }}</div>
+                        <p>
+                          {{ commentaire.commentaire }}
+                        </p>
+                      </div>
+                    </li>
+                    <div class="uk-heading-divider"></div>
+                  </ul>
+                {% endfor %}
+              </div>
+
+              {% do commentaires.setPageRange(2) %}
+              {{ knp_pagination_render(commentaires, 'base/pagination.html.twig') }}
+
+              <div class="comments">
+                <h3>Submit Review</h3>
+                <ul>
                   <li>
-                    Emphasis and Strong Tag
-                    <a href="#trailer-modal" uk-toggle=""> Preview </a>
-                    <span> 23 min </span>
+                    <div class="comment-content">
+                      {{ form_start(commentForm, {'attr': {'class': 'uk-grid-small', 'uk-grid': ''}}) }}
+                        <div class="uk-width-1-1@s">
+                          {{ form_label(commentForm.commentaire, 'Comment', {'label_attr': {'class': 'uk-form-label'}}) }}
+                          {{ form_widget(commentForm.commentaire, {'attr': {'class': 'uk-textarea', 'placeholder': 'Enter your comment here...', 'style': 'height: 160px'}}) }}
+                        </div>
+                        <div class="uk-grid-margin">
+                          <button type="submit" class="btn btn-outline-primary uk-first-column">Submit</button>
+                        </div>
+                      {{ form_end(commentForm) }}
+                    </div>
                   </li>
-                  <li>Brain Streak <span> 23 min </span></li>
-                  <li>Live Preview Feature <span> 23 min </span></li>
                 </ul>
               </div>
             </li>
-
-            <li>
-              <a class="uk-accordion-title" href="#"> Some Special Tags </a>
-              <div class="uk-accordion-content">
-                <!-- course-video-list -->
-                <ul class="course-curriculum-list">
-                  <li>The paragraph tag <span> 23 min </span></li>
-                  <li>
-                    The break tag
-                    <a href="#trailer-modal" uk-toggle=""> Preview </a>
-                    <span> 23 min </span>
-                  </li>
-                  <li>Headings in HTML <span> 23 min </span></li>
-                  <li>Bold, Italics Underline <span> 23 min </span></li>
-                </ul>
-              </div>
-            </li>
-
-            <li>
-              <a class="uk-accordion-title" href="#"> HTML Advanced level </a>
-              <div class="uk-accordion-content">
-                <!-- course-video-list -->
-                <ul class="course-curriculum-list">
-                  <li>Something to Ponder<span> 23 min </span></li>
-                  <li>Tables <span> 23 min </span></li>
-                  <li>
-                    HTML Entities
-                    <a href="#trailer-modal" uk-toggle=""> Preview </a
-                    ><span> 23 min </span>
-                  </li>
-                  <li>HTML Iframes <span> 23 min </span></li>
-                  <li>Some important things <span> 23 min </span></li>
-                </ul>
-              </div>
-            </li>
-          </ul>
-
-          <!-- Comments-->
-          <li>
-            <div class="comments">
-              <h4>
-                Comments
-                <span class="comments-amount"> (Number of comments) </span>
-              </h4>
-
-              <ul>
-                <li>
-                  <div class="comments-avatar">
-                    <img src="..\assets\images\avatars\avatar-2.jpeg" alt="" />
-                  </div>
-                  <div class="comment-content">
-                    <div class="comment-by">Stella Johnson</div>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                      sed diam nonummy nibh euismod tincidunt ut laoreet dolore
-                      magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
-                      quis nostrud exerci tation ullamcorper suscipit lobortis
-                      nisl ut aliquip ex ea commodo consequat.
-                    </p>
-                  </div>
-                </li>
-              </ul>
-            </div>
-
-            <div class="comments">
-              <h3>Submit Review</h3>
-              <ul>
-                <li>
-                  <div class="comments-avatar">
-                    <img src="..\assets\images\avatars\avatar-2.jpeg" alt="" />
-                  </div>
-                  <div class="comment-content">
-                    <form class="uk-grid-small" uk-grid="">
-                      <div class="uk-width-1-2@s">
-                        <label class="uk-form-label">Name</label>
-                        <input
-                          class="uk-input"
-                          type="text"
-                          placeholder="Name"
-                        />
-                      </div>
-                      <div class="uk-width-1-2@s">
-                        <label class="uk-form-label">Email</label>
-                        <input
-                          class="uk-input"
-                          type="text"
-                          placeholder="Email"
-                        />
-                      </div>
-                      <div class="uk-width-1-1@s">
-                        <label class="uk-form-label">Comment</label>
-                        <textarea
-                          class="uk-textarea"
-                          placeholder="Enter Your Comments her..."
-                          style="height: 160px"
-                        ></textarea>
-                      </div>
-                      <div class="uk-grid-margin">
-                        <input
-                          type="submit"
-                          value="submit"
-                          class="button success"
-                        />
-                      </div>
-                    </form>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </li>
+          {% endif %}
         </ul>
       </div>
     </div>
