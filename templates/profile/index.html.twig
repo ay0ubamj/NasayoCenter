@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}NasayoCenter - {{ user.nom}} {{ user.prenom}}{% endblock %}
+{% block title %}NasayoCenter - {{ app.user.nom}} {{ app.user.prenom}}{% endblock %}
 
 {% block body %}
     {% include 'profile/userProfile.html.twig' %}

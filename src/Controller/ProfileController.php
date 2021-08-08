@@ -32,18 +32,13 @@ class ProfileController extends AbstractController
         
 
         return $this->render('profile/profileInformation.html.twig', [
-            'user' => $user,
             'profileInfoForm' => $userInfoForm->createView(),
         ]);
     }
 
     #[Route('/profile/{id}{nom}/', name: 'profile')]
-    public function profile(User $user): Response
+    public function profile(): Response
     {
-        $userFormations = $user->getFormations();
-        return $this->render('profile/index.html.twig', [
-            'user' => $user,
-            'userFormations' => $userFormations,
-        ]);
+        return $this->render('profile/index.html.twig');
     }
 }

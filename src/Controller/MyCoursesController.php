@@ -12,10 +12,6 @@ class MyCoursesController extends AbstractController
     #[Route('/my-courses/learning', name: 'my-courses')]
     public function index(): Response
     {
-        $user = $this->getUser();
-        $Usercourses = $user->getFormations();
-        return $this->render('my-courses/index.html.twig', [
-            'courses' => $Usercourses,
-        ]);
+        return $this->render('my-courses/index.html.twig');
     }
 }

@@ -34,7 +34,7 @@
 
       <div uk-dropdown="pos: top-right ;mode:click" class="dropdown-notifications small">
         <!-- User Name / Avatar -->
-        <a href="profile-1.html">
+        <a href="{{ path('profile', {'id': app.user.id, 'nom': app.user.nom}) }}">
           <div class="dropdown-user-details">
             <div class="dropdown-user-avatar">
               <div class="res-circle">

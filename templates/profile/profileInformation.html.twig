@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}NasayoCenter - {{ user.nom}} {{ user.prenom}}{% endblock %}
+{% block title %}NasayoCenter - My Settings{% endblock %}
 
 {% block body %}
 <div class="page-content">
@@ -16,11 +16,11 @@
                     {{ form_start(profileInfoForm, {'attr': {'class': 'uk-child-width-1-2@s uk-grid-small p-4 uk-grid', 'uk-grid': ''}}) }}
                         <div class="uk-first-column">
                             <h5 class="uk-text-bold mb-2">{{ form_label(profileInfoForm.nom, 'First Name') }}</h5>
-                            {{ form_widget(profileInfoForm.nom, {'attr': {'class': 'uk-input', 'value': user.nom }}) }}
+                            {{ form_widget(profileInfoForm.nom, {'attr': {'class': 'uk-input', 'value': app.user.nom }}) }}
                         </div>
                         <div>
                             <h5 class="uk-text-bold mb-2">{{ form_label(profileInfoForm.prenom, 'Second Name') }}</h5>
-                            {{ form_widget(profileInfoForm.prenom, {'attr': {'class': 'uk-input', 'value': user.prenom }}) }}
+                            {{ form_widget(profileInfoForm.prenom, {'attr': {'class': 'uk-input', 'value': app.user.prenom }}) }}
                         </div>
                         
                     <div class="uk-flex uk-flex-right p-4">
