@@ -6,6 +6,12 @@
 <div class="page-content">
     <div class="page-content-inner">
         <h4>Account Setting</h4>
+        {% for message in app.flashes('message') %}
+            <div class="uk-alert-success text-center" uk-alert> 
+                <a class="uk-alert-close" uk-close></a> 
+                <p>{{ message }}</p> 
+            </div>
+        {% endfor %}
         <div uk-grid="" class="uk-grid">
             <div class="uk-width-expand@m uk-first-column">
                 <div class="uk-card-default rounded">

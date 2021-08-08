@@ -27,6 +27,7 @@ class ProfileController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
+            $this->addFlash('message', 'The information has been updated successfully !');
             return $this->redirectToRoute('profile-info');
         }
         
