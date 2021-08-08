@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}NasayoCenter - {{ user.nom}} {{ user.prenom}}{% endblock %}
+
+{% block body %}
+<div class="page-content">
+    <div class="page-content-inner">
+        <h4>Account Setting</h4>
+        <div uk-grid="" class="uk-grid">
+            <div class="uk-width-expand@m uk-first-column">
+                <div class="uk-card-default rounded">
+                    <div class="p-3">
+                        <h5 class="mb-0">My informations</h5>
+                    </div>
+                    <hr class="m-0">
+                    {{ form_start(profileInfoForm, {'attr': {'class': 'uk-child-width-1-2@s uk-grid-small p-4 uk-grid', 'uk-grid': ''}}) }}
+                        <div class="uk-first-column">
+                            <h5 class="uk-text-bold mb-2">{{ form_label(profileInfoForm.nom, 'First Name') }}</h5>
+                            {{ form_widget(profileInfoForm.nom, {'attr': {'class': 'uk-input', 'value': user.nom }}) }}
+                        </div>
+                        <div>
+                            <h5 class="uk-text-bold mb-2">{{ form_label(profileInfoForm.prenom, 'Second Name') }}</h5>
+                            {{ form_widget(profileInfoForm.prenom, {'attr': {'class': 'uk-input', 'value': user.prenom }}) }}
+                        </div>
+                        
+                    <div class="uk-flex uk-flex-right p-4">
+                        <button class="btn btn-default grey">Save Changes</button>
+                    </div>
+                    {{ form_end(profileInfoForm) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
