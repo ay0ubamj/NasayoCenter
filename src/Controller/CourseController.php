@@ -22,9 +22,9 @@ class CourseController extends AbstractController
         PaginatorInterface $paginator,
         Request $request
     ): Response {
-        $getData = $commentaireRepository->findBy(['formation' => $formation->getId(), 'etat' => true]);
+        $data = $commentaireRepository->findBy(['formation' => $formation->getId(), 'etat' => true]);
         $commentaires = $paginator->paginate(
-            $getData, /* Query */
+            $data, /* Query */
             $request->query->getInt('comments', 1), /* Page number in the URL */
             4 /* Limit of courses */
         );

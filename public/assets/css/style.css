@@ -30789,3 +30789,27 @@ select[class~=bs-select-hidden] {
 }
 {"mode":"full","isActive":false}
 {"mode":"full","isActive":false}
+
+/* User Avatar */
+
+  .res-circle {
+	width: 110%;
+    border-radius: 50%;
+    background: rgb(28, 29, 31);
+    line-height: 0;
+    position: relative;
+  }
+   
+  .res-circle::after {
+	content: "";
+	display: block;
+	padding-bottom: 100%;
+  }
+   
+  .circle-txt {
+	position: absolute;
+	bottom: 50%;
+	width: 100%;
+	text-align: center;
+	color: #fff;
+  }

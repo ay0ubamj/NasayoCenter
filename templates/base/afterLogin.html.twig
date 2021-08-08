@@ -1,5 +1,6 @@
 <div class="uk-navbar-right">
     <div class="header-widget">
+      <!--
       <div class="searchbox uk-visible@s">
         <input
           class="uk-search-input"
@@ -8,7 +9,7 @@
         />
         <button class="btn-searchbox"></button>
       </div>
-     
+      -->
       <!-- User icons close mobile-->
       <span class="icon-feather-x icon-small uk-hidden@s" uk-toggle="target: .header-widget ; cls: is-active"></span>
 
@@ -16,16 +17,10 @@
       <a href="#" class="header-widget-icon" uk-tooltip="title: My Courses ; pos: bottom ;offset:21">
         <i class="uil-youtube-alt"></i>
       </a>
-      <!-- notificiation icon  -->
-      <a href="#" class="header-widget-icon" uk-tooltip="title: Notificiation ; pos: bottom ;offset:21">
-        <i class="uil-bell"></i>
-        <span>4</span>
-      </a>
 
       <!-- profile-icon-->
-
       <a href="#" class="header-widget-icon profile-icon">
-        <img src="..\assets\images\avatars\avatar-2.jpeg" alt="" class="header-profile-icon"/>
+        <i class="icon-line-awesome-user"></i>
       </a>
 
       <div uk-dropdown="pos: top-right ;mode:click" class="dropdown-notifications small">
@@ -33,10 +28,12 @@
         <a href="profile-1.html">
           <div class="dropdown-user-details">
             <div class="dropdown-user-avatar">
-              <img src="..\assets\images\avatars\avatar-2.jpeg" alt=""/>
+              <div class="res-circle">
+                <div class="circle-txt">{{ app.user.nom|first }}{{ app.user.prenom|first }}</div>
+              </div>
             </div>
             <div class="dropdown-user-name">
-              {{ app.user.nom }} {{ app.user.prenom }} <span>Students</span>
+              {{ app.user.nom }} {{ app.user.prenom }}
             </div>
           </div>
         </a>
@@ -44,21 +41,14 @@
         <!-- User menu -->
         <ul class="dropdown-user-menu">
           <li>
-            <a href="#">
-              <i class="icon-material-outline-dashboard"></i>
-              Dashboard</a
-            >
-          </li>
-          <li>
-            <a href="#">
-              <i class="icon-feather-bookmark"></i> Bookmark
+            <a href="{{ path('profile', {'id': app.user.id, 'nom': app.user.nom}) }}">
+              <i class="icon-material-outline-account-circle"></i>My Profile
             </a>
           </li>
           <li>
-            <a href="profile-edit.html">
-              <i class="icon-feather-settings"></i> Account
-              Settings</a
-            >
+            <a href="{{ path('profile-info') }}">
+              <i class="icon-feather-settings"></i>Account Settings
+            </a>
           </li>
           <li>
             <a href="#" style="color: #62d76b">
@@ -85,11 +75,7 @@
     </div>
 
     <!-- icon search-->
-    <a
-      class="uk-navbar-toggle uk-hidden@s"
-      uk-toggle="target: .nav-overlay; animation: uk-animation-fade"
-      href="#"
-    >
+    <a class="uk-navbar-toggle uk-hidden@s" uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#">
       <i class="uil-search icon-small"></i>
     </a>
 
