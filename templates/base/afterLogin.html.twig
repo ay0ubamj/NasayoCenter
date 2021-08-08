@@ -13,6 +13,15 @@
       <!-- User icons close mobile-->
       <span class="icon-feather-x icon-small uk-hidden@s" uk-toggle="target: .header-widget ; cls: is-active"></span>
 
+      {% if is_granted('ROLE_ADMIN') %}
+        <a href="#" class="btn btn-pinterest btn-icon-label">
+          <span class="btn-inner--icon">
+            <i class="icon-material-outline-business-center"></i>
+          </span>
+          <span class="btn-inner--text">Administration</span>
+        </a>
+      {% endif %}
+
       <!-- course icon  -->
       <a href="{{ path('my-courses') }}" class="header-widget-icon" uk-tooltip="title: My Courses ; pos: bottom ;offset:21">
         <i class="uil-youtube-alt"></i>
