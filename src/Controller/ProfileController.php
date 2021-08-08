@@ -37,7 +37,7 @@ class ProfileController extends AbstractController
         ]);
     }
 
-    #[Route('/profile/{id}/{nom}/', name: 'profile')]
+    #[Route('/profile/{id}{nom}/', name: 'profile')]
     public function profile(User $user): Response
     {
         $userFormations = $user->getFormations();
