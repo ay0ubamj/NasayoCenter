@@ -14,7 +14,7 @@
       <span class="icon-feather-x icon-small uk-hidden@s" uk-toggle="target: .header-widget ; cls: is-active"></span>
 
       <!-- course icon  -->
-      <a href="#" class="header-widget-icon" uk-tooltip="title: My Courses ; pos: bottom ;offset:21">
+      <a href="{{ path('my-courses') }}" class="header-widget-icon" uk-tooltip="title: My Courses ; pos: bottom ;offset:21">
         <i class="uil-youtube-alt"></i>
       </a>
 
@@ -50,19 +50,6 @@
               <i class="icon-feather-settings"></i>Account Settings
             </a>
           </li>
-          <li>
-            <a href="#" style="color: #62d76b">
-              <i class="icon-feather-star"></i> Upgrade To Premium</a
-            >
-          </li>
-          <li>
-            <a href="#" id="night-mode" class="btn-night-mode">
-              <i class="icon-feather-moon"></i> Night mode
-              <span class="btn-night-mode-switch">
-                <span class="uk-switch-button"></span>
-              </span>
-            </a>
-          </li>
           <li class="menu-divider"></li>
           <li>
             <a href="{{ path('app_logout') }}">
@@ -74,12 +61,12 @@
       </div>
     </div>
 
-    <!-- icon search-->
+    <!-- icon search
     <a class="uk-navbar-toggle uk-hidden@s" uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#">
       <i class="uil-search icon-small"></i>
     </a>
-
-    <!-- overlay seach on mobile-->
+    -->
+    <!-- overlay seach on mobile
     <div class="nav-overlay uk-navbar-left uk-position-relative uk-flex-1 bg-grey uk-light p-2" hidden="" style="z-index: 10000">
       <div class="uk-navbar-item uk-width-expand" style="min-height: 60px">
         <form class="uk-search uk-search-navbar uk-width-1-1">
@@ -98,4 +85,5 @@
         href="#"
       ></a>
     </div>
+    -->
 </div>

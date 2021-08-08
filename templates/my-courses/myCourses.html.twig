@@ -1,0 +1,31 @@
+<div class="page-content">
+
+
+    <div class="page-content-inner">
+        <div class="section-small">
+            <h4 class="mb-lg-5">My learning</h4>
+            {% if courses is empty %}
+                <p class="uk-text-center uk-text-lead uk-text-info">You are not registered in any course yet!</p>
+                <br><br><br><br><br><br><br><br><br><br><br><br>
+            {% else %}
+                {% for course in courses%}
+                    <div class="uk-child-width-1-4@m uk-child-width-1-3@s course-card-grid uk-grid" uk-grid="">
+                        <div class="uk-first-column">
+                            <a href="#">
+                                <div class="course-card">
+                                    <div class="course-card-thumbnail ">
+                                        <img src="..\assets\images\course\2.png">
+                                    </div>
+                                    <div class="course-card-body">
+                                        <h4>{{ course.nomformation }}</h4>
+                                        <p>{{ course.description|u.truncate(150, '....', false) }}</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</div>
