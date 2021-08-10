@@ -20,45 +20,22 @@ class FormationRepository extends ServiceEntityRepository
     }
 
     /**
-      * @return Formation[] Returns an array of Formation objects
-      */
+     * @return Formation[] Returns an array of Formation objects
+     */
     public function lastTree()
     {
         return $this->createQueryBuilder('p')
             ->orderBy('p.id', 'DESC')
             ->setMaxResults(3)
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
     }
 
-
-    // /**
-    //  * @return Formation[] Returns an array of Formation objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function CountFormations()
     {
-        return $this->createQueryBuilder('f')
-            ->andWhere('f.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('f.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+        $query = $this->createQueryBuilder('q');
+        $query->select('count(q.id) as value');
 
-    /*
-    public function findOneBySomeField($value): ?Formation
-    {
-        return $this->createQueryBuilder('f')
-            ->andWhere('f.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        return $query->getQuery()->getSingleScalarResult();
     }
-    */
 }
