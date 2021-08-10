@@ -20,16 +20,24 @@ class CommentaireRepository extends ServiceEntityRepository
     }
 
     /**
-      * @return Int 
-      */
+     * @return Int 
+     */
     public function NumberofComments($formation)
     {
         return $this->createQueryBuilder('c')
-                    ->select('count(c.id)')
-                    ->where('c.formation = :formation')
-                    ->andWhere('c.etat = true')
-                    ->setParameter('formation', $formation)
-                    ->getQuery()
-                    ->getSingleScalarResult();
+            ->select('count(c.id)')
+            ->where('c.formation = :formation')
+            ->andWhere('c.etat = true')
+            ->setParameter('formation', $formation)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    public function CountComments()
+    {
+        $query = $this->createQueryBuilder('q');
+        $query->select('count(q.id) as value');
+
+        return $query->getQuery()->getSingleScalarResult();
     }
 }
