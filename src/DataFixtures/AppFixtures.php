@@ -16,7 +16,8 @@ class AppFixtures extends Fixture
 
     private $encoder;
 
-    public function __construct(UserPasswordEncoderInterface $encoder){
+    public function __construct(UserPasswordEncoderInterface $encoder)
+    {
         $this->encoder = $encoder;
     }
 
@@ -41,7 +42,7 @@ class AppFixtures extends Fixture
 
 
         // Création de 10 formations
-        for($i=0; $i<10; $i++){
+        for ($i = 0; $i < 10; $i++) {
             $formation = new Formation();
 
             $formation->setNomFormation($faker->words(3, true))
@@ -49,11 +50,12 @@ class AppFixtures extends Fixture
                 ->setDate($faker->dateTimeBetween('-6 month', 'now'))
                 ->setEtat('programmé')
                 ->setPrixFormateur(100.00)
-                ->setSlug($faker->slug(3));
+                ->setSlug($faker->slug(3))
+                ->setImage('test-611525e7c45a4351119314.png');
 
             $manager->persist($formation);
             // Création de 5 commentaires
-            for($j=0; $j<5; $j++){
+            for ($j = 0; $j < 5; $j++) {
                 $commentaire = new Commentaire();
 
                 $commentaire->setCommentaire($faker->text())
@@ -64,7 +66,6 @@ class AppFixtures extends Fixture
 
                 $manager->persist($commentaire);
             }
-
         }
 
         $manager->flush();

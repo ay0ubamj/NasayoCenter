@@ -18,3 +18,5 @@
 /phpunit.xml
 .phpunit.result.cache
 ###< phpunit/phpunit ###
+/public/uploads/images/*
+!/public/uploads/images/test-611525e7c45a4351119314.png

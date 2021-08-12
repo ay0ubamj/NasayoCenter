@@ -70,7 +70,7 @@ class UserCrudController extends AbstractCrudController
             TextField::new('email'),
             TextField::new('nom', 'First Name'),
             TextField::new('prenom', 'Last Name'),
-            AssociationField::new('formations'),
+            AssociationField::new('formations', 'Number of courses'),
             DateTimeField::new('createdAt', 'Registration date'),
         ];
     }

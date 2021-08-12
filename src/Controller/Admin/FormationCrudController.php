@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Formation;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
@@ -27,6 +28,7 @@ class FormationCrudController extends AbstractCrudController
             TextEditorField::new('description'),
             IdField::new('prixFormateur', 'Former price'),
             AssociationField::new('user', 'Number of students'),
+            TextField::new('imageFile')->setFormType(VichImageType::class)->onlyWhenCreating(),
             DateTimeField::new('date', 'Course date')->setFormat('dd-MM-y HH:mm')->renderAsNativeWidget(),
         ];
     }
