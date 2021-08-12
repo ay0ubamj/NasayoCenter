@@ -183,6 +183,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    public function getFullName(): ?string
+    {
+        return $this->nom . ' ' . $this->prenom;
+    }
+
     public function getCreatedAt(): ?\DateTimeImmutable
     {
         return $this->createdAt;
@@ -250,5 +255,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         }
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getNom() . ' ' . $this->getPrenom() . ' - ' . $this->getEmail();
+    }
+
+
+    public function getExportData()
+    {
+        return \array_merge([
+            'id' => $this->id,
+            'email' => $this->email,
+            'first_name' => $this->nom,
+            'last_name' => $this->prenom,
+            'createdAt' => $this->createdAt->format('d.m.Y H:m'),
+        ]);
     }
 }

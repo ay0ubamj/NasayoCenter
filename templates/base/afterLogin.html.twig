@@ -1,98 +1,99 @@
 <div class="uk-navbar-right">
-    <div class="header-widget">
-      <!--
-      <div class="searchbox uk-visible@s">
-        <input
-          class="uk-search-input"
-          type="search"
-          placeholder="Search..."
-        />
-        <button class="btn-searchbox"></button>
-      </div>
-      -->
-      <!-- User icons close mobile-->
-      <span class="icon-feather-x icon-small uk-hidden@s" uk-toggle="target: .header-widget ; cls: is-active"></span>
+	<div class="header-widget">
+		<!--
+		      <div class="searchbox uk-visible@s">
+		        <input
+		          class="uk-search-input"
+		          type="search"
+		          placeholder="Search..."
+		        />
+		        <button class="btn-searchbox"></button>
+		      </div>
+		      -->
+		<!-- User icons close mobile--><span class="icon-feather-x icon-small uk-hidden@s" uk-toggle="target: .header-widget ; cls: is-active"> </span>
 
-      {% if is_granted('ROLE_ADMIN') %}
-        <a href="#" class="btn btn-pinterest btn-icon-label">
-          <span class="btn-inner--icon">
-            <i class="icon-material-outline-business-center"></i>
-          </span>
-          <span class="btn-inner--text">Administration</span>
-        </a>
-      {% endif %}
+		{% if is_granted('ROLE_ADMIN') %}
+			<a href="{{ path('admin')}}" class="btn btn-pinterest btn-icon-label">
+				<span class="btn-inner--icon">
+					<i class="icon-material-outline-business-center"></i>
+				</span>
+				<span class="btn-inner--text">Administration</span>
+			</a>
+		{% endif %}
 
-      <!-- course icon  -->
-      <a href="{{ path('my-courses') }}" class="header-widget-icon" uk-tooltip="title: My Courses ; pos: bottom ;offset:21">
-        <i class="uil-youtube-alt"></i>
-      </a>
+		<!-- course icon  -->
+		<a href="{{ path('my-courses') }}" class="header-widget-icon" uk-tooltip="title: My Courses ; pos: bottom ;offset:21">
+			<i class="uil-youtube-alt"></i>
+		</a>
 
-      <!-- profile-icon-->
-      <a href="#" class="header-widget-icon profile-icon">
-        <i class="icon-line-awesome-user"></i>
-      </a>
+		<!-- profile-icon-->
+		<a href="#" class="header-widget-icon profile-icon">
+			<i class="icon-line-awesome-user"></i>
+		</a>
 
-      <div uk-dropdown="pos: top-right ;mode:click" class="dropdown-notifications small">
-        <!-- User Name / Avatar -->
-        <a href="{{ path('profile', {'id': app.user.id, 'nom': app.user.nom}) }}">
-          <div class="dropdown-user-details">
-            <div class="dropdown-user-avatar">
-              <div class="res-circle">
-                <div class="circle-txt">{{ app.user.nom|first }}{{ app.user.prenom|first }}</div>
-              </div>
-            </div>
-            <div class="dropdown-user-name">
-              {{ app.user.nom }} {{ app.user.prenom }}
-            </div>
-          </div>
-        </a>
+		<div
+			uk-dropdown="pos: top-right ;mode:click" class="dropdown-notifications small">
+			<!-- User Name / Avatar -->
+			<a href="{{ path('profile', {'id': app.user.id, 'nom': app.user.nom}) }}">
+				<div class="dropdown-user-details">
+					<div class="dropdown-user-avatar">
+						<div class="res-circle">
+							<div class="circle-txt">{{ app.user.nom|first }}{{ app.user.prenom|first }}</div>
+						</div>
+					</div>
+					<div class="dropdown-user-name">
+						{{ app.user.nom }}
+						{{ app.user.prenom }}
+					</div>
+				</div>
+			</a>
 
-        <!-- User menu -->
-        <ul class="dropdown-user-menu">
-          <li>
-            <a href="{{ path('profile', {'id': app.user.id, 'nom': app.user.nom}) }}">
-              <i class="icon-material-outline-account-circle"></i>My Profile
-            </a>
-          </li>
-          <li>
-            <a href="{{ path('profile-info') }}">
-              <i class="icon-feather-settings"></i>Account Settings
-            </a>
-          </li>
-          <li class="menu-divider"></li>
-          <li>
-            <a href="{{ path('app_logout') }}">
-              <i class="icon-feather-log-out"></i> Logout</a
-            >
-          </li>
-        </ul>
+			<!-- User menu -->
+			<ul class="dropdown-user-menu">
+				<li>
+					<a href="{{ path('profile', {'id': app.user.id, 'nom': app.user.nom}) }}">
+						<i class="icon-material-outline-account-circle"></i>My Profile
+					</a>
+				</li>
+				<li>
+					<a href="{{ path('profile-info') }}">
+						<i class="icon-feather-settings"></i>Account Settings
+					</a>
+				</li>
+				<li class="menu-divider"></li>
+				<li>
+					<a href="{{ path('app_logout') }}">
+						<i class="icon-feather-log-out"></i>
+						Logout</a>
+				</li>
+			</ul>
 
-      </div>
-    </div>
+		</div>
+	</div>
 
-    <!-- icon search
-    <a class="uk-navbar-toggle uk-hidden@s" uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#">
-      <i class="uil-search icon-small"></i>
-    </a>
-    -->
-    <!-- overlay seach on mobile
-    <div class="nav-overlay uk-navbar-left uk-position-relative uk-flex-1 bg-grey uk-light p-2" hidden="" style="z-index: 10000">
-      <div class="uk-navbar-item uk-width-expand" style="min-height: 60px">
-        <form class="uk-search uk-search-navbar uk-width-1-1">
-          <input
-            class="uk-search-input"
-            type="search"
-            placeholder="Search..."
-            autofocus=""
-          />
-        </form>
-      </div>
-      <a
-        class="uk-navbar-toggle"
-        uk-close=""
-        uk-toggle="target: .nav-overlay; animation: uk-animation-fade"
-        href="#"
-      ></a>
-    </div>
-    -->
+	<!-- icon search
+	    <a class="uk-navbar-toggle uk-hidden@s" uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#">
+	      <i class="uil-search icon-small"></i>
+	    </a>
+	    -->
+	<!-- overlay seach on mobile
+	    <div class="nav-overlay uk-navbar-left uk-position-relative uk-flex-1 bg-grey uk-light p-2" hidden="" style="z-index: 10000">
+	      <div class="uk-navbar-item uk-width-expand" style="min-height: 60px">
+	        <form class="uk-search uk-search-navbar uk-width-1-1">
+	          <input
+	            class="uk-search-input"
+	            type="search"
+	            placeholder="Search..."
+	            autofocus=""
+	          />
+	        </form>
+	      </div>
+	      <a
+	        class="uk-navbar-toggle"
+	        uk-close=""
+	        uk-toggle="target: .nav-overlay; animation: uk-animation-fade"
+	        href="#"
+	      ></a>
+	    </div>
+	    -->
 </div>
