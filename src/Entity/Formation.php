@@ -6,10 +6,13 @@ use App\Repository\FormationRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\OploadedFile;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=FormationRepository::class)
- * @ORM\Table(name="formation", indexes={@ORM\Index(columns={"nom_formation", "description"}, flags={"fulltext"})})
+ * @Vich\Uploadable
  */
 class Formation
 {
@@ -59,6 +62,17 @@ class Formation
      * @ORM\OneToMany(targetEntity=Commentaire::class, mappedBy="formation", orphanRemoval=true)
      */
     private $commentaires;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $image;
+
+    /**
+     * @Vich\UploadableField(mapping="formation_images", fileNameProperty="image")
+     * @var File
+     */
+    private $imageFile;
 
     public function __construct()
     {
@@ -194,6 +208,29 @@ class Formation
             }
         }
 
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image): self
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    public function setImageFile($file): self
+    {
+        $this->imageFile = $file;
         return $this;
     }
 }
