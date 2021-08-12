@@ -10,12 +10,7 @@
 				<div class="uk-width-2-3@m course-details pt-0">
 					<h1>{{ formation.nomformation }}</h1>
 
-					<p>
-						Master JavaScript with the most complete course! Projects Excellent
-																																																            course. we explain the core concepts in javascript that are usually
-																																																            glossed over in other courses. And he does it in a manner that is
-																																																            clear and concise
-					</p>
+					<p>{{ formation.motivation }}</p>
 
 					<div class="uk-flex uk-flex-between uk-flex-bottom mt-lg-4">
 						<div>
@@ -68,21 +63,13 @@
 
 						<h4>What you’ll learn</h4>
 						<div class="uk-child-width-1-2@s" uk-grid="">
-							<div>
-								<ul class="list-2">
-									<li>Setting up the environment</li>
-									<li>Advanced HTML Practices</li>
-									<li>Build a portfolio website</li>
-									<li>Responsive Designs</li>
-								</ul>
-							</div>
-							<div>
-								<ul class="list-2">
-									<li>Understand HTML Programming</li>
-									<li>Code HTML</li>
-									<li>Start building beautiful websites</li>
-								</ul>
-							</div>
+							{% for l in formation.whatuLearn %}
+								<div>
+									<ul class="list-2">
+										<li>{{l}}</li>
+									</ul>
+								</div>
+							{% endfor %}
 						</div>
 
 					</li>

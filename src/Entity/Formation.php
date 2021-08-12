@@ -39,11 +39,6 @@ class Formation
     private $date;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $etat;
-
-    /**
      * @ORM\Column(type="decimal", precision=6, scale=2)
      */
     private $prixFormateur;
@@ -73,6 +68,16 @@ class Formation
      * @var File
      */
     private $imageFile;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $motivation;
+
+    /**
+     * @ORM\Column(type="json")
+     */
+    private $whatuLearn = [];
 
     public function __construct()
     {
@@ -117,18 +122,6 @@ class Formation
     public function setDate(\DateTimeInterface $date): self
     {
         $this->date = $date;
-
-        return $this;
-    }
-
-    public function getEtat(): ?string
-    {
-        return $this->etat;
-    }
-
-    public function setEtat(string $etat): self
-    {
-        $this->etat = $etat;
 
         return $this;
     }
@@ -231,6 +224,30 @@ class Formation
     public function setImageFile($file): self
     {
         $this->imageFile = $file;
+        return $this;
+    }
+
+    public function getMotivation(): ?string
+    {
+        return $this->motivation;
+    }
+
+    public function setMotivation(string $motivation): self
+    {
+        $this->motivation = $motivation;
+
+        return $this;
+    }
+
+    public function getWhatuLearn(): ?array
+    {
+        return $this->whatuLearn;
+    }
+
+    public function setWhatuLearn(array $whatuLearn): self
+    {
+        $this->whatuLearn = $whatuLearn;
+
         return $this;
     }
 }
