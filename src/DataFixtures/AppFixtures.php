@@ -45,13 +45,14 @@ class AppFixtures extends Fixture
         for ($i = 0; $i < 10; $i++) {
             $formation = new Formation();
 
-            $formation->setNomFormation($faker->words(3, true))
+            $formation->setNomFormation($faker->sentence(3, true))
                 ->setDescription($faker->text(300))
                 ->setDate($faker->dateTimeBetween('-6 month', 'now'))
-                ->setEtat('programmé')
                 ->setPrixFormateur(100.00)
                 ->setSlug($faker->slug(3))
-                ->setImage('test-611525e7c45a4351119314.png');
+                ->setImage('test-611525e7c45a4351119314.png')
+                ->setMotivation($faker->text(100))
+                ->setWhatuLearn($faker->sentences(9, false));
 
             $manager->persist($formation);
             // Création de 5 commentaires
