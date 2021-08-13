@@ -38,4 +38,10 @@ class CommentaireCrudController extends AbstractCrudController
             ->remove(Crud::PAGE_INDEX, Action::NEW)
             ->remove(Crud::PAGE_INDEX, Action::EDIT);
     }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->setDefaultSort(['etat' => 'ASC']);
+    }
 }

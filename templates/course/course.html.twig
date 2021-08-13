@@ -57,9 +57,6 @@
 					</li>
 					{% if app.user %}
 						<li>
-							<a href="#">Curriculum</a>
-						</li>
-						<li>
 							<a href="#">Comments</a>
 						</li>
 					{% endif %}
@@ -92,161 +89,6 @@
 					</li>
 
 					{% if app.user %}
-						<!-- Curriculum-->
-						<ul class="course-curriculum" uk-accordion="multiple: true">
-							<li class="uk-open">
-								<a class="uk-accordion-title" href="#">
-									Html Introduction
-								</a>
-								<div
-									class="uk-accordion-content">
-									<!-- course-video-list -->
-									<ul class="course-curriculum-list">
-										<li>What is HTML
-											<span>
-												23 min
-											</span>
-										</li>
-										<li>What is a Web page?
-											<span>
-												23 min
-											</span>
-										</li>
-										<li>
-											Your First Web Page
-											<a href="#trailer-modal" uk-toggle="">
-												Preview
-											</a>
-											<span>
-												23 min
-											</span>
-										</li>
-										<li>Brain Streak
-											<span>
-												23 min
-											</span>
-										</li>
-									</ul>
-								</div>
-							</li>
-
-							<li>
-								<a class="uk-accordion-title" href="#">
-									Your First webpage</a>
-								<div
-									class="uk-accordion-content">
-									<!-- course-video-list -->
-									<ul class="course-curriculum-list">
-										<li>Headings
-											<span>
-												23 min
-											</span>
-										</li>
-										<li>Paragraphs
-											<span>
-												23 min
-											</span>
-										</li>
-										<li>
-											Emphasis and Strong Tag
-											<a href="#trailer-modal" uk-toggle="">
-												Preview
-											</a>
-											<span>
-												23 min
-											</span>
-										</li>
-										<li>Brain Streak
-											<span>
-												23 min
-											</span>
-										</li>
-										<li>Live Preview Feature
-											<span>
-												23 min
-											</span>
-										</li>
-									</ul>
-								</div>
-							</li>
-
-							<li>
-								<a class="uk-accordion-title" href="#">
-									Some Special Tags
-								</a>
-								<div
-									class="uk-accordion-content">
-									<!-- course-video-list -->
-									<ul class="course-curriculum-list">
-										<li>The paragraph tag
-											<span>
-												23 min
-											</span>
-										</li>
-										<li>
-											The break tag
-											<a href="#trailer-modal" uk-toggle="">
-												Preview
-											</a>
-											<span>
-												23 min
-											</span>
-										</li>
-										<li>Headings in HTML
-											<span>
-												23 min
-											</span>
-										</li>
-										<li>Bold, Italics Underline
-											<span>
-												23 min
-											</span>
-										</li>
-									</ul>
-								</div>
-							</li>
-
-							<li>
-								<a class="uk-accordion-title" href="#">
-									HTML Advanced level
-								</a>
-								<div
-									class="uk-accordion-content">
-									<!-- course-video-list -->
-									<ul class="course-curriculum-list">
-										<li>Something to Ponder<span>
-												23 min
-											</span>
-										</li>
-										<li>Tables
-											<span>
-												23 min
-											</span>
-										</li>
-										<li>
-											HTML Entities
-											<a href="#trailer-modal" uk-toggle="">
-												Preview
-											</a>
-											<span>
-												23 min
-											</span>
-										</li>
-										<li>HTML Iframes
-											<span>
-												23 min
-											</span>
-										</li>
-										<li>Some important things
-											<span>
-												23 min
-											</span>
-										</li>
-									</ul>
-								</div>
-							</li>
-						</ul>
-
 						<!-- Comments-->
 						<li>
 							<div class="comments">
@@ -274,24 +116,26 @@
 							{% do commentaires.setPageRange(2) %}
 							{{ knp_pagination_render(commentaires, 'base/pagination.html.twig') }}
 
-							<div class="comments">
-								<h3>Submit Review</h3>
-								<ul>
-									<li>
-										<div class="comment-content">
-											{{ form_start(commentForm, {'attr': {'class': 'uk-grid-small', 'uk-grid': ''}}) }}
-											<div class="uk-width-1-1@s">
-												{{ form_label(commentForm.commentaire, 'Comment', {'label_attr': {'class': 'uk-form-label'}}) }}
-												{{ form_widget(commentForm.commentaire, {'attr': {'class': 'uk-textarea', 'placeholder': 'Enter your comment here...', 'style': 'height: 160px'}}) }}
+							{% if app.user in courseUsers %}
+								<div class="comments">
+									<h3>Submit Review</h3>
+									<ul>
+										<li>
+											<div class="comment-content">
+												{{ form_start(commentForm, {'attr': {'class': 'uk-grid-small', 'uk-grid': ''}}) }}
+												<div class="uk-width-1-1@s">
+													{{ form_label(commentForm.commentaire, 'Comment', {'label_attr': {'class': 'uk-form-label'}}) }}
+													{{ form_widget(commentForm.commentaire, {'attr': {'class': 'uk-textarea', 'placeholder': 'Enter your comment here...', 'style': 'height: 160px'}}) }}
+												</div>
+												<div class="uk-grid-margin">
+													<button type="submit" class="btn btn-outline-primary uk-first-column">Submit</button>
+												</div>
+												{{ form_end(commentForm) }}
 											</div>
-											<div class="uk-grid-margin">
-												<button type="submit" class="btn btn-outline-primary uk-first-column">Submit</button>
-											</div>
-											{{ form_end(commentForm) }}
-										</div>
-									</li>
-								</ul>
-							</div>
+										</li>
+									</ul>
+								</div>
+							{% endif %}
 						</li>
 					{% endif %}
 				</ul>

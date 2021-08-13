@@ -21,11 +21,11 @@ class EasyAdminSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return [
-            BeforeEntityPersistedEvent::class => ['setFormationSlugAndEtat']
+            BeforeEntityPersistedEvent::class => ['setFormationSlug']
         ];
     }
 
-    public function setFormationSlugAndEtat(BeforeEntityPersistedEvent $event)
+    public function setFormationSlug(BeforeEntityPersistedEvent $event)
     {
         $entity = $event->getEntityInstance();
 
@@ -35,6 +35,5 @@ class EasyAdminSubscriber implements EventSubscriberInterface
 
         $slug = $this->slugger->slug($entity->getNomFormation());
         $entity->setSlug($slug);
-        $entity->setEtat('programmé');
     }
 }

@@ -7,6 +7,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
@@ -25,9 +26,11 @@ class FormationCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             TextField::new('nomFormation', 'Course title'),
+            TextField::new('motivation', 'Small description')->onlyWhenCreating(),
             TextEditorField::new('description'),
             IdField::new('prixFormateur', 'Former price'),
-            AssociationField::new('user', 'Number of students'),
+            AssociationField::new('user', 'Number of students')->onlyWhenUpdating(),
+            ArrayField::new('whatuLearn', 'What students will learn')->onlyWhenCreating(),
             TextField::new('imageFile')->setFormType(VichImageType::class)->onlyWhenCreating(),
             DateTimeField::new('date', 'Course date')->setFormat('dd-MM-y HH:mm')->renderAsNativeWidget(),
         ];

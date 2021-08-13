@@ -4,7 +4,7 @@
 			<h3>Check out our newest</h3>
 			<h5>
 				With our growing catalog of over 30 Nanodegree programs from beginner to
-				        advanced
+												        advanced
 			</h5>
 		</div>
 		<div class="course-grid-slider mt-lg-5" uk-slider="finite: true">
@@ -16,11 +16,10 @@
 								<div class="course-card">
 									<div class="course-card-thumbnail">
 										<img src="{{ vich_uploader_asset(formation, 'imageFile') }}"/>
-										<span class="play-button-trigger"></span>
 									</div>
 									<div class="course-card-body">
 										<h4>{{ formation.nomformation }}</h4>
-										<p>{{ formation.description|u.truncate(150, '....', false) }}</p>
+										<p>{{ formation.description|u.truncate(150, '....', false)|striptags }}</p>
 									</div>
 								</div>
 							</a>

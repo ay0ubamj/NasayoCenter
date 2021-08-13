@@ -73,7 +73,7 @@
 						<img class="card-img-top" src="{{ vich_uploader_asset(formation, 'imageFile') }}" alt="Card image cap">
 						<div class="card-body">
 							<h5 class="card-title">{{formation.nomFormation}}</h5>
-							<p class="card-text">{{formation.description|u.truncate(100,'...',false)}}</p>
+							<p class="card-text">{{formation.description|u.truncate(100,'...',false)|striptags}}</p>
 						</div>
 					</div>
 				</div>
