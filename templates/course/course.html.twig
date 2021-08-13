@@ -1,6 +1,12 @@
 <div class="page-content">
 	<div class="course-details-wrapper topic-1 uk-light">
 		<div class="page-content-inner pt-lg-8 pb-0">
+			{% for message in app.flashes('message') %}
+				<div class="uk-alert-success text-center" uk-alert>
+					<a class="uk-alert-close" uk-close></a>
+					<p>{{ message }}</p>
+				</div>
+			{% endfor %}
 			<div class="mb-lg-5" uk-grid="">
 				<div class="uk-width-1-3@m">
 					<div class="course-thumbnail">
@@ -17,18 +23,29 @@
 							<div class="course-details-info">
 								<ul>
 									<li>Course date:
-										{{ formation.date|date("m/d/Y") }}</li>
+										{{ formation.date|date("d/m/Y") }}</li>
 								</ul>
 							</div>
 						</div>
-						<a href="#">
-							<button type="button" class="btn btn-default btn-icon-label uk-first-column">
+						{% if app.user in courseUsers %}
+							{{ form_start(UnSubForm) }}
+							<button type="submit" class="btn btn-default btn-icon-label uk-first-column">
 								<span class="btn-inner--icon">
-									<i class="uil-play"></i>
+									<i class="icon-material-outline-delete"></i>
 								</span>
-								<span class="btn-inner--text">Play now</span>
+								<span class="btn-inner--text">Unregister</span>
 							</button>
-						</a>
+							{{ form_end(UnSubForm) }}
+						{% else %}
+							{{ form_start(SubForm) }}
+							<button type="submit" class="btn btn-default btn-icon-label uk-first-column">
+								<span class="btn-inner--icon">
+									<i class="icon-material-outline-add"></i>
+								</span>
+								<span class="btn-inner--text">Add to my list</span>
+							</button>
+							{{ form_end(SubForm) }}
+						{% endif %}
 					</div>
 				</div>
 			</div>
@@ -63,10 +80,10 @@
 
 						<h4>What you’ll learn</h4>
 						<div class="uk-child-width-1-2@s" uk-grid="">
-							{% for l in formation.whatuLearn %}
+							{% for wulearn in formation.whatuLearn %}
 								<div>
 									<ul class="list-2">
-										<li>{{l}}</li>
+										<li>{{ wulearn }}</li>
 									</ul>
 								</div>
 							{% endfor %}

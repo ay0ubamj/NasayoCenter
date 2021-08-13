@@ -70,7 +70,7 @@
 			{% for formation in lastCourses %}
 				<div class="col-xl-3 col-md-6 mb-4">
 					<div class="card" style="width: 18rem;">
-						<img class="card-img-top" src="{{asset("assets/images/course/2.png")}}" alt="Card image cap">
+						<img class="card-img-top" src="{{ vich_uploader_asset(formation, 'imageFile') }}" alt="Card image cap">
 						<div class="card-body">
 							<h5 class="card-title">{{formation.nomFormation}}</h5>
 							<p class="card-text">{{formation.description|u.truncate(100,'...',false)}}</p>
