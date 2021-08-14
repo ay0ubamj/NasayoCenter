@@ -259,7 +259,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function __toString()
     {
-        return $this->getNom() . ' ' . $this->getPrenom() . ' - ' . $this->getEmail();
+        if(in_array("ROLE_FORMATEUR", $this->getRoles())){
+            return $this->getNom() . ' ' . $this->getPrenom() . ' - ' . $this->getEmail() . ' - ' . "Formateur";
+        } elseif(in_array("ROLE_ADMIN", $this->getRoles())){
+            return $this->getNom() . ' ' . $this->getPrenom() . ' - ' . $this->getEmail() . ' - ' . "Administrateur";
+        } else {
+            return $this->getNom() . ' ' . $this->getPrenom() . ' - ' . $this->getEmail() . ' - ' . "Utilisateur";
+        }
     }
 
 
