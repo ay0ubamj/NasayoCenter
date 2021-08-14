@@ -261,8 +261,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if(in_array("ROLE_FORMATEUR", $this->getRoles())){
             return $this->getNom() . ' ' . $this->getPrenom() . ' - ' . $this->getEmail() . ' - ' . "Formateur";
-        } elseif(in_array("ROLE_ADMIN", $this->getRoles())){
-            return $this->getNom() . ' ' . $this->getPrenom() . ' - ' . $this->getEmail() . ' - ' . "Administrateur";
         } else {
             return $this->getNom() . ' ' . $this->getPrenom() . ' - ' . $this->getEmail() . ' - ' . "Utilisateur";
         }
