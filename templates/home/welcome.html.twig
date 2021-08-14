@@ -8,16 +8,13 @@
 						<img src="..\assets\images\feature.png" alt="">
 					</div>
 					<div>
-						<h2>Learn to code anytime
-							<br>
-							and everywhere
-							<p>
-								Get started with just your name and your email adress . It’s as simple
-								<br>
-								as
-								                                that
-								                                -- no payments or credit card information required.
-							</p>
+						<h2>
+							<p>What do you want to learn? </p>
+							<p>Nevermind, if you want to learn anything, anytime , Nasayo Center is made for you.</p>
+							<p>So what are you waiting for? </p>
+							{% if not app.user %}
+								<p>Sign up right now and start taking courses !</p>
+							{% endif %}
 						</h2>
 					</div>
 				</div>
