@@ -79,6 +79,12 @@ class Formation
      */
     private $whatuLearn = [];
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $formateur;
+
     public function __construct()
     {
         $this->user = new ArrayCollection();
@@ -247,6 +253,18 @@ class Formation
     public function setWhatuLearn(array $whatuLearn): self
     {
         $this->whatuLearn = $whatuLearn;
+
+        return $this;
+    }
+
+    public function getFormateur(): ?User
+    {
+        return $this->formateur;
+    }
+
+    public function setFormateur(?User $formateur): self
+    {
+        $this->formateur = $formateur;
 
         return $this;
     }

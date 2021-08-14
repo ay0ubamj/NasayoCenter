@@ -7,10 +7,11 @@ use App\Service\CsvService;
 use Symfony\Component\HttpFoundation\Request;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
-use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Option\EA;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Factory\FilterFactory;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
@@ -41,8 +42,7 @@ class UserCrudController extends AbstractCrudController
 
         return $actions
             ->add(Crud::PAGE_INDEX, $export)
-            ->remove(Crud::PAGE_INDEX, Action::NEW)
-            ->remove(Crud::PAGE_INDEX, Action::EDIT);
+            ->remove(Crud::PAGE_INDEX, Action::NEW);
     }
 
     public function export(Request $request)
@@ -66,12 +66,13 @@ class UserCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
-            TextField::new('email'),
-            TextField::new('nom', 'First Name'),
-            TextField::new('prenom', 'Last Name'),
-            AssociationField::new('formations', 'Number of courses'),
-            DateTimeField::new('createdAt', 'Registration date'),
+            IdField::new('id')->onlyOnIndex(),
+            TextField::new('email')->onlyOnIndex(),
+            TextField::new('nom', 'First Name')->onlyOnIndex(),
+            TextField::new('prenom', 'Last Name')->onlyOnIndex(),
+            AssociationField::new('formations', 'Number of courses')->onlyOnIndex(),
+            ArrayField::new('roles', 'User Roles')->onlyWhenUpdating(),
+            DateTimeField::new('createdAt', 'Registration date')->onlyOnIndex(),
         ];
     }
 }

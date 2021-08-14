@@ -30,6 +30,7 @@ class FormationCrudController extends AbstractCrudController
             TextEditorField::new('description'),
             IdField::new('prixFormateur', 'Former price'),
             AssociationField::new('user', 'Students')->onlyWhenUpdating(),
+            AssociationField::new('formateur', 'Former')->onlyWhenCreating(),
             ArrayField::new('whatuLearn', 'What students will learn')->onlyWhenCreating(),
             TextField::new('imageFile')->setFormType(VichImageType::class)->onlyWhenCreating(),
             DateTimeField::new('date', 'Course date')->setFormat('dd-MM-y HH:mm')->renderAsNativeWidget(),
