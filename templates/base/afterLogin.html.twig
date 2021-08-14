@@ -21,10 +21,15 @@
 			</a>
 		{% endif %}
 
-		<!-- course icon  -->
-		<a href="{{ path('my-courses') }}" class="header-widget-icon" uk-tooltip="title: My Courses ; pos: bottom ;offset:21">
-			<i class="uil-youtube-alt"></i>
-		</a>
+		<!-- courses icon  -->
+			<a href="{{ path('former', {'id': app.user.id}) }}" class="header-widget-icon" uk-tooltip="title: My Courses ; pos: bottom ;offset:21">
+				<i class="icon-feather-video"></i>
+			</a>
+		<!-- learning icon  -->
+			<a href="{{ path('my-courses') }}" class="header-widget-icon" uk-tooltip="title: My learning ; pos: bottom ;offset:21">
+				<i class="uil-youtube-alt"></i>
+			</a>
+		
 
 		<!-- profile-icon-->
 		<a href="#" class="header-widget-icon profile-icon">

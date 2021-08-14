@@ -39,3 +39,4 @@ security:
     - { path: ^/my-courses/learning, roles: ROLE_USER }
     - { path: ^/profile/information, roles: ROLE_USER }
     - { path: ^/admin, roles: ROLE_ADMIN }
+    - { path: ^/former, roles: ROLE_FORMATEUR }
