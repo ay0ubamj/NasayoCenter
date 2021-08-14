@@ -64,17 +64,21 @@ class CourseController extends AbstractController
         $SubcourseForm->handleRequest($request);
 
         if ($SubcourseForm->isSubmitted() && $SubcourseForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+            if(!$this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY')){
+                $em = $this->getDoctrine()->getManager();
 
-            $user->addFormation($formation);
-            $formation->addUser($user);
+                $user->addFormation($formation);
+                $formation->addUser($user);
+    
+                $em->persist($user);
+                $em->persist($formation);
+                $em->flush();
 
-            $em->persist($user);
-            $em->persist($formation);
-            $em->flush();
+                
+                $this->addFlash('message', 'You are registred now in this course !');
+                return $this->redirectToRoute('course', ['slug' => $formation->getSlug()]);
+            }
 
-            $this->addFlash('message', 'You are registred now in this course !');
-            return $this->redirectToRoute('course', ['slug' => $formation->getSlug()]);
         }
 
         // UnSubscribeInCourse
@@ -82,6 +86,7 @@ class CourseController extends AbstractController
         $UnSubcourseForm->handleRequest($request);
 
         if ($UnSubcourseForm->isSubmitted() && $UnSubcourseForm->isValid()) {
+            
             $em = $this->getDoctrine()->getManager();
 
             $user->removeFormation($formation);
