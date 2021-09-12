@@ -24,6 +24,10 @@
 									<div class="course-card-body">
 										<h4>{{ course.nomformation }}</h4>
 										<p>{{ course.description|u.truncate(150, '....', false) }}</p>
+										<div class="course-card-footer">
+                                            <h5>Price: </h5>
+                                            <h5> {{ course.prixFormateur }} $</h5>
+                                        </div>
 									</div>
 								</div>
 							</a>
